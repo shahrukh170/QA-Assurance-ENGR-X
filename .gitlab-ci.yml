@@ -1,0 +1,8 @@
+stages: [lint, test, build, deploy]
+
+unit_tests:
+  stage: test
+  image: python:3.12
+  script:
+    - pip install -r apps/service-a/requirements.txt pytest pytest-cov
+    - pytest apps/service-a/tests -q --cov=apps/service-a/src --cov-fail-under=85
